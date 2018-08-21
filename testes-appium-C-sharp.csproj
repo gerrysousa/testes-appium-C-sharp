@@ -73,7 +73,6 @@
     <Compile Include="page\FormularioPage.cs" />
     <Compile Include="page\MenuPage.cs" />
     <Compile Include="test\FormularioTeste.cs" />
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

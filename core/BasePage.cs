@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//using Teste_Automatizado.Pages;
 using testes_appium_C_sharp.core;
 
 namespace testes_appium_C_sharp.core

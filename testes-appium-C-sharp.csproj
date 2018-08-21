@@ -70,10 +70,37 @@
     <Compile Include="core\BasePage.cs" />
     <Compile Include="core\BaseTest.cs" />
     <Compile Include="core\DriverFactory.cs" />
+    <Compile Include="page\AbasPage.cs" />
+    <Compile Include="page\AccordionPage.cs" />
+    <Compile Include="page\AlertaPage.cs" />
+    <Compile Include="page\CliquesPage.cs" />
+    <Compile Include="page\DragNDropPage.cs" />
     <Compile Include="page\FormularioPage.cs" />
     <Compile Include="page\MenuPage.cs" />
+    <Compile Include="page\SeuBarriga\SBContasPage.cs" />
+    <Compile Include="page\SeuBarriga\SBHomePage.cs" />
+    <Compile Include="page\SeuBarriga\SBLoginPage.cs" />
+    <Compile Include="page\SeuBarriga\SBMenuPage.cs" />
+    <Compile Include="page\SeuBarriga\SBMovimentacaoPage.cs" />
+    <Compile Include="page\SeuBarriga\SBResumoPage.cs" />
+    <Compile Include="page\SplashPage.cs" />
+    <Compile Include="page\SwipeListPage.cs" />
+    <Compile Include="page\WebViewPage.cs" />
+    <Compile Include="test\AbasTeste.cs" />
+    <Compile Include="test\AccordionTeste.cs" />
+    <Compile Include="test\AlertTest.cs" />
+    <Compile Include="test\CalculadoraTeste.cs" />
+    <Compile Include="test\CalculadoraTesteMotoG.cs" />
+    <Compile Include="test\CliquesTeste.cs" />
+    <Compile Include="test\DragNDropTeste.cs" />
     <Compile Include="test\FormularioTeste.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="test\OpcaoEscondidaTeste.cs" />
+    <Compile Include="test\SBTeste.cs" />
+    <Compile Include="test\SplashTeste.cs" />
+    <Compile Include="test\SwipeListTeste.cs" />
+    <Compile Include="test\SwipeTeste.cs" />
+    <Compile Include="test\WebViewTeste.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -119,8 +119,8 @@ namespace testes_appium_C_sharp.test
 /*
 package br.ce.gsousa.appium.test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.AreEqual;
+import static org.junit.Assert.True;
 
 import java.net.MalformedURLException;
 import java.util.concurrent.TimeUnit;
@@ -142,39 +142,39 @@ public class FormularioTeste extends BaseTest {
 	private MenuPage menu = new MenuPage();
 	private FormularioPage page = new FormularioPage();
 
-	@Before
+	[SetUp]
 	public void inicializarAppium() throws MalformedURLException {
 		// driver = DriverFactory.getDriver();
 		menu.acessarFormulario();
 	}
 
-	@Test
+	[Test]
 	public void devePreencherCampoTexto() throws MalformedURLException {
 		page.escreverNome("Gerry");
 
 		assertEquals("Gerry", page.obterNome());
 	}
 
-	@Test
+	[Test]
 	public void deveInteragirComCombo() throws MalformedURLException {
 		page.selecionarCombo("Nintendo Switch");
 
-		Assert.assertEquals("Nintendo Switch", page.obterValorCombo());
+		Assert.AreEqual("Nintendo Switch", page.obterValorCombo());
 	}
 
-	@Test
+	[Test]
 	public void deveInteragirComSwitchCheckBox() throws MalformedURLException {
-		Assert.assertFalse(page.isCheckMarcado());
-		Assert.assertTrue(page.isSwitchMarcado());
+		Assert.False(page.isCheckMarcado());
+		Assert.True(page.isSwitchMarcado());
 
 		page.clicarCheck();
 		page.clicarSwitch();
 
-		Assert.assertTrue(page.isCheckMarcado());
-		Assert.assertFalse(page.isSwitchMarcado());
+		Assert.True(page.isCheckMarcado());
+		Assert.False(page.isSwitchMarcado());
 	}
 
-	@Test
+	[Test]
 	public void deveRealizarCadastro() throws MalformedURLException {
 		page.escreverNome("Gerry");
 		page.clicarCheck();
@@ -188,7 +188,7 @@ public class FormularioTeste extends BaseTest {
 		assertTrue(page.obterSwithCadastrado().endsWith("Marcado"));
 	}
 
-	@Test
+	[Test]
 	public void deveRealizarCadastroDemorado() throws MalformedURLException {
 		page.escreverNome("Gerry");
 		DriverFactory.getDriver().manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
@@ -197,37 +197,37 @@ public class FormularioTeste extends BaseTest {
 		// esperar(3000);
 
 		WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), 10);
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.XPath("//*[@text='Nome: Gerry']")));
+		wait.Until(ExpectedConditions.presenceOfElementLocated(By.XPath("//*[@text='Nome: Gerry']")));
 
 		assertEquals("Nome: Gerry", page.obterNomeCadastrato());
 	}
 
-	@Test
+	[Test]
 	public void deveMudarData() {
 		page.clicarTexto("01/01/2000");
 		page.clicarTexto("20");
 		page.clicarTexto("OK");
 
-		Assert.assertTrue(page.existeElementoPorTexto("20/2/2000"));
+		Assert.True(page.existeElementoPorTexto("20/2/2000"));
 	}
 
-	@Test
+	[Test]
 	public void deveMudarHora() {
 		page.clicarTexto("06:00");
 		page.clicar(MobileBy.AccessibilityId("10"));
 		page.clicar(MobileBy.AccessibilityId("40"));
 		page.clicarTexto("OK");
 
-		Assert.assertTrue(page.existeElementoPorTexto("10:40"));
+		Assert.True(page.existeElementoPorTexto("10:40"));
 	}
 	
-	@Test
+	[Test]
 	public void deveInteragirComSeekbar() {
 		page.clicarSeebar(0.65);
 
 		page.salvar();
 		assertEquals("Slider: 65", page.obterSliderCadastrado());
-		//Assert.assertTrue(page.existeElementoPorTexto("Slider: 65"));
+		//Assert.True(page.existeElementoPorTexto("Slider: 65"));
 	}
 }
 

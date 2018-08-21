@@ -13,9 +13,34 @@ using testes_appium_C_sharp.page;
 
 namespace testes_appium_C_sharp.test
 {
-    class CalculadoraTeste
+    class CalculadoraTeste : BaseTest
     {
-    }
+        [Test]
+    public void deveSomarDoisValores() throws MalformedURLException
+        {
+            DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+        desiredCapabilities.setCapability("platformName", "Android");
+	    desiredCapabilities.setCapability("deviceName", "emulator-5554");
+	    desiredCapabilities.setCapability("automationName", "uiautomator2");
+	    desiredCapabilities.setCapability("appPackage", "com.android.calculator2");
+	    desiredCapabilities.setCapability("appActivity", "com.android.calculator2.Calculator");
+	    	    
+	    AndroidDriver<MobileElement> driver = new AndroidDriver<MobileElement>(new URL("http://localhost:4723/wd/hub"), desiredCapabilities);
+
+        AppiumWebElement el3 = (MobileElement)driver.FindElementById("com.android.calculator2:id/digit_2");
+        el3.click();
+	    AppiumWebElement el4 = (MobileElement)driver.FindElementByAccessibilityId("plus");
+        el4.click();
+	    AppiumWebElement el5 = (MobileElement)driver.FindElementById("com.android.calculator2:id/digit_2");
+        el5.click();
+	    AppiumWebElement el6 = (MobileElement)driver.FindElementById("com.android.calculator2:id/result");
+
+        //System.out.print(el6.getText());
+
+        Assert.AreEqual("4", el6.getText());
+	    driver.quit();
+	}
+}
 }
 
 /*
@@ -35,7 +60,7 @@ import io.appium.java_client.android.AndroidDriver;
 public class CalculadoraTeste
 {
 
-    @Test
+    [Test]
     public void deveSomarDoisValores() throws MalformedURLException
     {
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
@@ -57,7 +82,7 @@ public class CalculadoraTeste
 
     //System.out.print(el6.getText());
 
-    Assert.assertEquals("4", el6.getText());
+    Assert.AreEqual("4", el6.getText());
 	    driver.quit();
 	}
 }

@@ -21,7 +21,7 @@ namespace testes_appium_C_sharp.page
         {
             DriverFactory.getDriver().manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
             WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), 10);
-            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.XPath("//*[@text='Splash!']")));
+            Wait.Until(ExpectedConditions.invisibilityOfElementLocated(By.XPath("//*[@text='Splash!']")));
 
         }
     }
@@ -54,7 +54,7 @@ public void aguardarSplashSumir()
 {
     DriverFactory.getDriver().manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
     WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), 10);
-    wait.until(ExpectedConditions.invisibilityOfElementLocated(By.XPath("//*[@text='Splash!']")));
+    Wait.Until(ExpectedConditions.invisibilityOfElementLocated(By.XPath("//*[@text='Splash!']")));
 
 }
 }

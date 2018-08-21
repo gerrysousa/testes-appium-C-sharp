@@ -13,8 +13,25 @@ using testes_appium_C_sharp.page;
 
 namespace testes_appium_C_sharp.test
 {
-    class AbasTeste
+    class AbasTeste : BaseTest
     {
+        private MenuPage page = new MenuPage();
+        private AbasPage abas = new AbasPage();
+
+        [Test]
+    public void deveInteragirComAbas()
+        {
+            //acessar menu abas
+            page.acessarAbas();
+            //verificar que esta na aba 1
+            //abas.deveClicarAba1();
+            Assert.True(abas.isAba1());
+
+            //acessar aba 2 
+            abas.deveClicarAba2();
+            //verificar que esta na aba 2
+            Assert.True(abas.isAba2());
+        }
     }
 }
 /*
@@ -33,19 +50,19 @@ public class AbasTeste extends BaseTest
     private MenuPage page = new MenuPage();
 private AbasPage abas = new AbasPage();
 
-@Test
+[Test]
     public void deveInteragirComAbas()
 {
     //acessar menu abas
     page.acessarAbas();
     //verificar que esta na aba 1
     //abas.deveClicarAba1();
-    Assert.assertTrue(abas.isAba1());
+    Assert.True(abas.isAba1());
 
     //acessar aba 2 
     abas.deveClicarAba2();
     //verificar que esta na aba 2
-    Assert.assertTrue(abas.isAba2());
+    Assert.True(abas.isAba2());
 }
 
 }

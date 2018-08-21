@@ -10,8 +10,33 @@ using testes_appium_C_sharp.core;
 
 namespace testes_appium_C_sharp.page
 {
-    class DragNDropPage
+    class DragNDropPage : BasePage
     {
+        public void arrastar(String origem, String destino)
+        {
+            AppiumWebElement inicio = getDriver().FindElement(By.XPath("//*[@text='" + origem + "']"));
+            AppiumWebElement fim = getDriver().FindElement(By.XPath("//*[@text='" + destino + "']"));
+
+            new TouchAction(getDriver())
+                    .longPress(inicio)
+                    .moveTo(fim)
+                    .release()
+                    .perform();
+        }
+
+        public String[] obterLista()
+        {
+            List<MobileElement> elements = getDriver().FindElements(By.ClassName("android.widget.TextView"));
+            String[] retorno = new String[elements.size()];
+
+            for (int i = 0; i < elements.size(); i++)
+            {
+                retorno[i] = elements.get(i).getText();
+                //System.out.print("\""+retorno[i]+"\", ");
+            }
+
+            return retorno;
+        }
     }
 }
 /*
@@ -33,8 +58,8 @@ public class DragNDropPage extends BasePage
 
     public void arrastar(String origem, String destino)
 {
-    MobileElement inicio = getDriver().findElement(By.xpath("//*[@text='" + origem + "']"));
-    MobileElement fim = getDriver().findElement(By.xpath("//*[@text='" + destino + "']"));
+    AppiumWebElement inicio = getDriver().FindElement(By.XPath("//*[@text='" + origem + "']"));
+    AppiumWebElement fim = getDriver().FindElement(By.XPath("//*[@text='" + destino + "']"));
 
     new TouchAction(getDriver())
             .longPress(inicio)
@@ -45,7 +70,7 @@ public class DragNDropPage extends BasePage
 
 public String[] obterLista()
 {
-    List<MobileElement> elements = getDriver().findElements(By.className("android.widget.TextView"));
+    List<MobileElement> elements = getDriver().FindElements(By.ClassName("android.widget.TextView"));
     String[] retorno = new String[elements.size()];
 
     for (int i = 0; i < elements.size(); i++)

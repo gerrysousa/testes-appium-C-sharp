@@ -197,7 +197,7 @@ public class FormularioTeste extends BaseTest {
 		// esperar(3000);
 
 		WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), 10);
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@text='Nome: Gerry']")));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.XPath("//*[@text='Nome: Gerry']")));
 
 		assertEquals("Nome: Gerry", page.obterNomeCadastrato());
 	}

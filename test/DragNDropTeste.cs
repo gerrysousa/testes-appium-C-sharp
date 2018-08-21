@@ -47,7 +47,7 @@ private String[] estadoFinal = new String[] { "Faça um clique longo,", "é uma 
     public void deveEfetuarDragNDrop()
 {
     WebDriverWait wait = new WebDriverWait(getDriver(), 10);
-    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@text='Formulário']")));
+    wait.until(ExpectedConditions.presenceOfElementLocated(By.XPath("//*[@text='Formulário']")));
     menu.scroll(0.9, 0.10);
 
     menu.acessarDragNDrop();

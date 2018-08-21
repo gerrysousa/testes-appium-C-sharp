@@ -10,8 +10,48 @@ using testes_appium_C_sharp.core;
 
 namespace testes_appium_C_sharp.page
 {
-    class WebViewPage
+    class WebViewPage : BasePage
     {
+        public void entrarContextoWeb()
+        {
+            Set<String> contextHandles = DriverFactory.getDriver().getContextHandles();
+            for (String valor : contextHandles)
+            {
+                System.out.print(valor);
+                System.out.print(contextHandles);
+            }
+            // getDriver().context((String)contextHandles.toArray()[1]);
+        }
+
+        public void setEmail(String email)
+        {
+            getDriver().FindElement(By.id("email")).sendKeys(email);
+        }
+
+        public void setSenha(String senha)
+        {
+            getDriver().FindElement(By.id("senha")).sendKeys(senha);
+        }
+
+        public void sairContextoWeb()
+        {
+            getDriver().context((String)getDriver().getContextHandles().toArray()[0]);
+        }
+
+        public String getMensagem()
+        {
+            return obterTexto(By.XPath("//* /div[@class='alert alert-sucess']"));
+        }
+
+        public bool getMensagem2(String texto)
+        {
+            return existeElementoPorTexto(texto);
+        }
+
+        public void entrar()
+        {
+            clicarTexto("Entrar");
+        }
     }
 }
 /*
@@ -43,12 +83,12 @@ public class WebViewPage extends BasePage
 
 public void setEmail(String email)
 {
-    getDriver().findElement(By.id("email")).sendKeys(email);
+    getDriver().FindElement(By.id("email")).sendKeys(email);
 }
 
 public void setSenha(String senha)
 {
-    getDriver().findElement(By.id("senha")).sendKeys(senha);
+    getDriver().FindElement(By.id("senha")).sendKeys(senha);
 }
 
 public void sairContextoWeb()
@@ -58,10 +98,10 @@ public void sairContextoWeb()
 
 public String getMensagem()
 {
-    return obterTexto(By.xpath("//* /div[@class='alert alert-sucess']"));
+    return obterTexto(By.XPath("//* /div[@class='alert alert-sucess']"));
 }
 
-public boolean getMensagem2(String texto)
+public bool getMensagem2(String texto)
 {
     return existeElementoPorTexto(texto);
 }

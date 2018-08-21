@@ -10,8 +10,17 @@ using testes_appium_C_sharp.core;
 
 namespace testes_appium_C_sharp.page
 {
-    class CliquesPage
+    class CliquesPage : BasePage
     {
+        public void cliqueLongo()
+        {
+            cliqueLongo(By.XPath("//*[@text='Clique Longo']"));
+        }
+
+        public String obterTextoCampo()
+        {
+            return getDriver().FindElement(By.XPath("(//android.widget.TextView)[3]")).getText();
+        }
     }
 }
 /*
@@ -29,12 +38,12 @@ public class CliquesPage extends BasePage
 
     public void cliqueLongo()
 {
-    cliqueLongo(By.xpath("//*[@text='Clique Longo']"));
+    cliqueLongo(By.XPath("//*[@text='Clique Longo']"));
 }
 
 public String obterTextoCampo()
 {
-    return getDriver().findElement(By.xpath("(//android.widget.TextView)[3]")).getText();
+    return getDriver().FindElement(By.XPath("(//android.widget.TextView)[3]")).getText();
 }
 
 }

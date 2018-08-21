@@ -43,7 +43,7 @@ private SwipeListPage page = new SwipeListPage();
     public void deveIntaragirSwipeList()
 {
     WebDriverWait wait = new WebDriverWait(getDriver(), 10);
-    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@text='Formulário']")));
+    wait.until(ExpectedConditions.presenceOfElementLocated(By.XPath("//*[@text='Formulário']")));
     menu.scroll(0.9, 0.10);
     menu.acessarSwipeList();
 

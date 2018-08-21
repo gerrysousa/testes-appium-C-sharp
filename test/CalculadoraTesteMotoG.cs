@@ -46,14 +46,14 @@ public class CalculadoraTesteMotoG
 	    	    
 	    AndroidDriver<MobileElement> driver = new AndroidDriver<MobileElement>(new URL("http://localhost:4723/wd/hub"), desiredCapabilities);
 
-    MobileElement el1 = (MobileElement)driver.findElementById("com.google.android.calculator:id/digit_4");
+    AppiumWebElement el1 = (MobileElement)driver.FindElementById("com.google.android.calculator:id/digit_4");
     el1.click();
 	    el1.click();
-	    MobileElement el2 = (MobileElement)driver.findElementByAccessibilityId("mais");
+	    AppiumWebElement el2 = (MobileElement)driver.FindElementByAccessibilityId("mais");
     el2.click();
-	    MobileElement el3 = (MobileElement)driver.findElementById("com.google.android.calculator:id/digit_4");
+	    AppiumWebElement el3 = (MobileElement)driver.FindElementById("com.google.android.calculator:id/digit_4");
     el3.click();
-	    MobileElement el4 = (MobileElement)driver.findElementById("com.google.android.calculator:id/result");
+	    AppiumWebElement el4 = (MobileElement)driver.FindElementById("com.google.android.calculator:id/result");
 
     Assert.assertEquals("8", el4.getText());
 	    driver.quit();

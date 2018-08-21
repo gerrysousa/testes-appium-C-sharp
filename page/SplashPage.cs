@@ -10,8 +10,20 @@ using testes_appium_C_sharp.core;
 
 namespace testes_appium_C_sharp.page
 {
-    class SplashPage
+    class SplashPage : BasePage
     {
+        public bool isTelaSplashVisivel()
+        {
+            return existeElementoPorTexto("Splash!");
+        }
+
+        public void aguardarSplashSumir()
+        {
+            DriverFactory.getDriver().manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+            WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), 10);
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.XPath("//*[@text='Splash!']")));
+
+        }
     }
 }
 /*
@@ -33,7 +45,7 @@ public class SplashPage extends BasePage
 
 
 
-    public boolean isTelaSplashVisivel()
+    public bool isTelaSplashVisivel()
 {
     return existeElementoPorTexto("Splash!");
 }
@@ -42,7 +54,7 @@ public void aguardarSplashSumir()
 {
     DriverFactory.getDriver().manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
     WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), 10);
-    wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@text='Splash!']")));
+    wait.until(ExpectedConditions.invisibilityOfElementLocated(By.XPath("//*[@text='Splash!']")));
 
 }
 }

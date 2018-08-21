@@ -47,13 +47,13 @@ public class CalculadoraTeste
 	    	    
 	    AndroidDriver<MobileElement> driver = new AndroidDriver<MobileElement>(new URL("http://localhost:4723/wd/hub"), desiredCapabilities);
 
-    MobileElement el3 = (MobileElement)driver.findElementById("com.android.calculator2:id/digit_2");
+    AppiumWebElement el3 = (MobileElement)driver.FindElementById("com.android.calculator2:id/digit_2");
     el3.click();
-	    MobileElement el4 = (MobileElement)driver.findElementByAccessibilityId("plus");
+	    AppiumWebElement el4 = (MobileElement)driver.FindElementByAccessibilityId("plus");
     el4.click();
-	    MobileElement el5 = (MobileElement)driver.findElementById("com.android.calculator2:id/digit_2");
+	    AppiumWebElement el5 = (MobileElement)driver.FindElementById("com.android.calculator2:id/digit_2");
     el5.click();
-	    MobileElement el6 = (MobileElement)driver.findElementById("com.android.calculator2:id/result");
+	    AppiumWebElement el6 = (MobileElement)driver.FindElementById("com.android.calculator2:id/result");
 
     //System.out.print(el6.getText());
 

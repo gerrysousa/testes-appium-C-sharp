@@ -42,7 +42,7 @@ public class OpcaoEscondidaTeste extends BaseTest
     public void deveAcessarOpcaoEscondida()
 {
     WebDriverWait wait = new WebDriverWait(getDriver(), 10);
-    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@text='Formulário']")));
+    wait.until(ExpectedConditions.presenceOfElementLocated(By.XPath("//*[@text='Formulário']")));
 
     menu.scrollDown();
 

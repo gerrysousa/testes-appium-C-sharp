@@ -158,32 +158,32 @@ import io.appium.java_client.TouchAction;
 
 public class BasePage {
 	public void escrever(By by, String texto) {
-		getDriver().findElement(by).sendKeys(texto);
+		getDriver().FindElement(by).sendKeys(texto);
 	}
 	
 	public String obterTexto(By by) {
-		return getDriver().findElement(by).getText();
+		return getDriver().FindElement(by).getText();
 	}
 	
 	public void clicar(By by) {
-		getDriver().findElement(by).click();
+		getDriver().FindElement(by).click();
 	}
 	
 	public void clicarTexto(String texto) {
-		clicar(By.xpath("//*[@text='"+texto+"']"));
+		clicar(By.XPath("//*[@text='"+texto+"']"));
 	}
 	
 	public void selecionarCombo(By by, String valor) {
-		getDriver().findElement(by).click();
+		getDriver().FindElement(by).click();
 		clicarTexto(valor);
 	}
 	
-	public boolean isCheckMarcado(By by) {
-		return getDriver().findElement(by).getAttribute("checked").equals("true");		
+	public bool isCheckMarcado(By by) {
+		return getDriver().FindElement(by).getAttribute("checked").equals("true");		
 	}
 	
-	public boolean existeElementoPorTexto(String texto) {
-		List<MobileElement> elementos =  getDriver().findElements(By.xpath("//*[@text='"+texto+"']"));
+	public bool existeElementoPorTexto(String texto) {
+		List<MobileElement> elementos =  getDriver().FindElements(By.XPath("//*[@text='"+texto+"']"));
 		return elementos.size()>0;
 	}
 	
@@ -248,7 +248,7 @@ public class BasePage {
 		swipe(0.9, 0.1);
 	}
 	
-	public void swipeElement(MobileElement elemento, double inicio, double fim) {
+	public void swipeElement(AppiumWebElement elemento, double inicio, double fim) {
 		int y= elemento.getLocation().y + (elemento.getSize().height / 2);
 		
 		int start_x =(int) (elemento.getSize().width* inicio);
@@ -263,7 +263,7 @@ public class BasePage {
 	}
 
 	public void cliqueLongo(By by) {
-		new TouchAction(getDriver()).longPress(getDriver().findElement(by)).perform();
+		new TouchAction(getDriver()).longPress(getDriver().FindElement(by)).perform();
 		
 	}
 	

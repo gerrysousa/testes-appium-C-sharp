@@ -9,8 +9,32 @@ using System.Threading.Tasks;
 using testes_appium_C_sharp.core;
 namespace testes_appium_C_sharp.page
 {
-    class AlertaPage
+    class AlertaPage : BasePage
     {
+        public void clicarAlertaConfirm()
+        {
+            clicarTexto("ALERTA CONFIRM");
+        }
+
+        public void confirmar()
+        {
+            clicarTexto("CONFIRMAR");
+        }
+
+        public void sair()
+        {
+            clicarTexto("SAIR");
+        }
+
+        public void clicarAlertaSimples()
+        {
+            clicarTexto("ALERTA SIMPLES");
+        }
+
+        public void clicarForaCaixa()
+        {
+            tap(100, 150);
+        }
     }
 }
 /*

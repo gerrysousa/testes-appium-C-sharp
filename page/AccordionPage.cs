@@ -10,8 +10,17 @@ using testes_appium_C_sharp.core;
 
 namespace testes_appium_C_sharp.page
 {
-    class AccordionPage
+    class AccordionPage : BasePage
     {
+        public void selecionarOpc1()
+        {
+            clicarTexto("Opção 1");
+        }
+
+        public String obterValorOpc1()
+        {
+            return obterTexto(By.XPath("//*[@text='Opção 1']/../..//following-sibling::android.view.ViewGroup//android.widget.TextView"));
+        }
     }
 }
 /*
@@ -32,7 +41,7 @@ public class AccordionPage extends BasePage
 
 public String obterValorOpc1()
 {
-    return obterTexto(By.xpath("//*[@text='Opção 1']/../..//following-sibling::android.view.ViewGroup//android.widget.TextView"));
+    return obterTexto(By.XPath("//*[@text='Opção 1']/../..//following-sibling::android.view.ViewGroup//android.widget.TextView"));
 }
 }
 

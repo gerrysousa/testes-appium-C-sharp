@@ -1,13 +1,31 @@
-﻿using System;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Appium;
+using OpenQA.Selenium.Appium.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using testes_appium_C_sharp.core;
 
 namespace testes_appium_C_sharp.page.SeuBarriga
 {
-    class SBLoginPage
+    class SBLoginPage : BasePage
     {
+        public void setEmail(String email)
+        {
+            escrever(By.ClassName("android.widget.EditText"), email);
+        }
+
+        public void setSenha(String senha)
+        {
+            escrever(By.XPath("//android.widget.EditText[2]"), senha);
+        }
+
+        public void entrar()
+        {
+            clicarTexto("ENTRAR");
+        }
     }
 }
 /*
@@ -23,12 +41,12 @@ public class SBLoginPage extends BasePage
 
     public void setEmail(String email)
 {
-    escrever(By.className("android.widget.EditText"), email);
+    escrever(By.ClassName("android.widget.EditText"), email);
 }
 
 public void setSenha(String senha)
 {
-    escrever(By.xpath("//android.widget.EditText[2]"), senha);
+    escrever(By.XPath("//android.widget.EditText[2]"), senha);
 }
 
 public void entrar()

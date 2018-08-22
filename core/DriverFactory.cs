@@ -120,7 +120,7 @@ public class DriverFactory
             {
                 e.printStackTrace();
             }
-            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+            driver.Manage().Timeouts().ImplicitlyWait(10, TimeUnit.SECONDS);
 
         }
         catch (IOException e1)
@@ -149,7 +149,7 @@ public class DriverFactory
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.Manage().Timeouts().ImplicitlyWait(10, TimeUnit.SECONDS);
 
     }
 

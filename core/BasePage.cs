@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Interfaces;
 using OpenQA.Selenium.Appium.MultiTouch;
 using System;
@@ -45,7 +46,7 @@ namespace testes_appium_C_sharp.core
 
         public bool existeElementoPorTexto(String texto)
         {
-            //List<IMobileElement> elementos = DriverFactory.getDriver().FindElements(By.XPath("//*[@text='" + texto + "']"));
+            //List<AppiumWebElement> elementos = DriverFactory.getDriver().FindElements(By.XPath("//*[@text='" + texto + "']"));
             //return elementos.Size() > 0;
             return true;
         }
@@ -119,13 +120,13 @@ namespace testes_appium_C_sharp.core
             swipe(0.9, 0.1);
         }
 
-        /*
-        public void swipeElement(IMobileElement elemento, double inicio, double fim)
+       
+        public void swipeElement(AppiumWebElement elemento, double inicio, double fim)
         {
-            int y = elemento.getLocation().y + (elemento.getSize().height / 2);
+            int y = elemento.Location.Y  + (elemento.Size.Height / 2);
 
-            int start_x = (int)(elemento.getSize().width * inicio);
-            int end_x = (int)(elemento.getSize().width * fim);
+            int start_x = (int)(elemento.Size.Width * inicio);
+            int end_x = (int)(elemento.Size.Width * fim);
 
             new TouchAction(DriverFactory.getDriver())
             .Press(start_x, y)
@@ -133,7 +134,7 @@ namespace testes_appium_C_sharp.core
             .MoveTo(end_x, y)
             .Release()
             .Perform();
-        }*/
+        }
 
         public void cliqueLongo(By by)
         {
@@ -158,11 +159,11 @@ import io.appium.java_client.TouchAction;
 
 public class BasePage {
 	public void escrever(By by, String texto) {
-		getDriver().FindElement(by).sendKeys(texto);
+		getDriver().FindElement(by).SendKeys(texto);
 	}
 	
 	public String obterTexto(By by) {
-		return getDriver().FindElement(by).getText();
+		return getDriver().FindElement(by).Text;
 	}
 	
 	public void clicar(By by) {
@@ -183,7 +184,7 @@ public class BasePage {
 	}
 	
 	public bool existeElementoPorTexto(String texto) {
-		List<MobileElement> elementos =  getDriver().FindElements(By.XPath("//*[@text='"+texto+"']"));
+		List<AppiumWebElement> elementos =  getDriver().FindElements(By.XPath("//*[@text='"+texto+"']"));
 		return elementos.size()>0;
 	}
 	
@@ -193,12 +194,12 @@ public class BasePage {
 	}
 	
 	public void scroll(double inicio, double fim) {
-		Dimension size =  getDriver().manage().window().getSize();
+		Dimension size =  getDriver().Manage().window().Size;
 		
-		int x = size.width/2;
+		int x = size.Width/2;
 		
-		int start_y =(int) (size.height* inicio);
-		int end_y =(int) (size.height* fim);
+		int start_y =(int) (size.Height* inicio);
+		int end_y =(int) (size.Height* fim);
 		
 		new TouchAction(getDriver())
 		.press(x, start_y)
@@ -209,20 +210,20 @@ public class BasePage {
 	}
 	
 	public String obterTituloAlerta() {
-		return obterTexto(By.id("android:id/alertTitle"));
+		return obterTexto(By.Id("android:id/alertTitle"));
 	}
 	
 	public String obterMensageAlerta() {
-		return obterTexto(By.id("android:id/message"));
+		return obterTexto(By.Id("android:id/message"));
 	}
 	
 	public void swipe(double inicio, double fim) {
-		Dimension size =  getDriver().manage().window().getSize();
+		Dimension size =  getDriver().Manage().window().Size;
 		
-		int y = size.height/2;
+		int y = size.Height/2;
 		
-		int start_x =(int) (size.width* inicio);
-		int end_x =(int) (size.width* fim);
+		int start_x =(int) (size.Width* inicio);
+		int end_x =(int) (size.Width* fim);
 		
 		new TouchAction(getDriver())
 		.press(start_x, y)
@@ -249,10 +250,10 @@ public class BasePage {
 	}
 	
 	public void swipeElement(AppiumWebElement elemento, double inicio, double fim) {
-		int y= elemento.getLocation().y + (elemento.getSize().height / 2);
+		int y= elemento.Location.Y  + (elemento.Size.Height / 2);
 		
-		int start_x =(int) (elemento.getSize().width* inicio);
-		int end_x =(int) (elemento.getSize().width* fim);
+		int start_x =(int) (elemento.Size.Width* inicio);
+		int end_x =(int) (elemento.Size.Width* fim);
 		
 		new TouchAction(getDriver())
 		.press(start_x, y)

@@ -152,10 +152,10 @@ public class FormularioPage extends BasePage{
 	public void clicarSeebar(double posicao) {
 		int delta = 50;
 		AppiumWebElement seek =  getDriver().FindElement(MobileBy.AccessibilityId("slid"));
-		int y = seek.getLocation().y+ (seek.getSize().height/2);
+		int y = seek.Location.Y + (seek.Size.Height/2);
 				
-		int xInicial = seek.getLocation().x+ delta;
-		int x = (int) (xInicial+ ((seek.getSize().width- 2*delta)* posicao));
+		int xInicial = seek.Location.X+ delta;
+		int x = (int) (xInicial+ ((seek.Size.Width- 2*delta)* posicao));
 		
 		tap(x,y);		
 	}

@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Interfaces;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,9 +20,9 @@ namespace testes_appium_C_sharp.page
 
         public void aguardarSplashSumir()
         {
-            DriverFactory.getDriver().manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-            WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), 10);
-            Wait.Until(ExpectedConditions.invisibilityOfElementLocated(By.XPath("//*[@text='Splash!']")));
+            DriverFactory.getDriver().Manage().Timeouts().ImplicitlyWait( TimeSpan.FromSeconds(0));
+            WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), TimeSpan.FromSeconds(10));
+            wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.XPath("//*[@text='Splash!']")));
 
         }
     }
@@ -52,9 +53,9 @@ public class SplashPage extends BasePage
 
 public void aguardarSplashSumir()
 {
-    DriverFactory.getDriver().manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-    WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), 10);
-    Wait.Until(ExpectedConditions.invisibilityOfElementLocated(By.XPath("//*[@text='Splash!']")));
+    DriverFactory.getDriver().Manage().Timeouts().ImplicitlyWait( TimeSpan.FromSeconds(0));
+    WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), TimeSpan.FromSeconds(10));
+    Wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.XPath("//*[@text='Splash!']")));
 
 }
 }

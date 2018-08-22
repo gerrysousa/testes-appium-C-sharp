@@ -191,13 +191,13 @@ public class FormularioTeste extends BaseTest {
 	[Test]
 	public void deveRealizarCadastroDemorado() throws MalformedURLException {
 		page.escreverNome("Gerry");
-		DriverFactory.getDriver().manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+		DriverFactory.getDriver().Manage().Timeouts().ImplicitlyWait( TimeSpan.FromSeconds(0));
 
 		page.salvarDemorado();
 		// esperar(3000);
 
-		WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), 10);
-		wait.Until(ExpectedConditions.presenceOfElementLocated(By.XPath("//*[@text='Nome: Gerry']")));
+		WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), TimeSpan.FromSeconds(10));
+		wait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(By.XPath("//*[@text='Nome: Gerry']")));
 
 		assertEquals("Nome: Gerry", page.obterNomeCadastrato());
 	}

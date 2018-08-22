@@ -25,19 +25,19 @@ namespace testes_appium_C_sharp.test
         [Test]
     public void deveEfetuarDragNDrop()
         {
-            WebDriverWait wait = new WebDriverWait(getDriver(), 10);
-            wait.Until(ExpectedConditions.presenceOfElementLocated(By.XPath("//*[@text='Formulário']")));
+            WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), TimeSpan.FromSeconds(10));
+            wait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(By.XPath("//*[@text='Formulário']")));
             menu.scroll(0.9, 0.10);
 
             menu.acessarDragNDrop();
             esperar(1000);
-            Assert.AssertArrayEquals(estadoInicial, page.obterLista());
+            CollectionAssert.AreEqual(estadoInicial, page.obterLista());
 
             page.arrastar("Esta", "e arraste para");
-            Assert.assertArrayEquals(estadoIntermediario, page.obterLista());
+            CollectionAssert.AreEqual(estadoIntermediario, page.obterLista());
 
             page.arrastar("Faça um clique longo,", "é uma lista");
-            Assert.assertArrayEquals(estadoFinal, page.obterLista());
+            CollectionAssert.AreEqual(estadoFinal, page.obterLista());
 
         }
     }
@@ -71,9 +71,9 @@ private String[] estadoFinal = new String[] { "Faça um clique longo,", "é uma 
 [Test]
     public void deveEfetuarDragNDrop()
 {
-    WebDriverWait wait = new WebDriverWait(getDriver(), 10);
-    wait.Until(ExpectedConditions.presenceOfElementLocated(By.XPath("//*[@text='Formulário']")));
-    menu.scroll(0.9, 0.10);
+    WebDriverWait wait = new WebDriverWait(getDriver(), TimeSpan.FromSeconds(10));
+    wait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(By.XPath("//*[@text='Formulário']")));
+    menu.scroll(0.9, 0.TimeSpan.FromSeconds(10));
 
     menu.acessarDragNDrop();
     esperar(1000);

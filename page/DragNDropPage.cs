@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Interfaces;
+using OpenQA.Selenium.Appium.MultiTouch;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,24 +15,25 @@ namespace testes_appium_C_sharp.page
     {
         public void arrastar(String origem, String destino)
         {
-            AppiumWebElement inicio = getDriver().FindElement(By.XPath("//*[@text='" + origem + "']"));
-            AppiumWebElement fim = getDriver().FindElement(By.XPath("//*[@text='" + destino + "']"));
+            AppiumWebElement inicio = DriverFactory.getDriver().FindElement(By.XPath("//*[@text='" + origem + "']"));
+            AppiumWebElement fim = DriverFactory.getDriver().FindElement(By.XPath("//*[@text='" + destino + "']"));
 
-            new TouchAction(getDriver())
-                    .longPress(inicio)
-                    .moveTo(fim)
-                    .release()
-                    .perform();
+            //new TouchAction(DriverFactory.getDriver()).LongPress(DriverFactory.getDriver().FindElement(by)).Perform();
+            new TouchAction(DriverFactory.getDriver())
+                    .LongPress(inicio)
+                    .MoveTo(fim)
+                    .Release()
+                    .Perform();
         }
-
+        
         public String[] obterLista()
         {
-            List<MobileElement> elements = getDriver().FindElements(By.ClassName("android.widget.TextView"));
+            List<AppiumWebElement> elements = DriverFactory.getDriver().FindElements(By.ClassName("android.widget.TextView"));
             String[] retorno = new String[elements.size()];
 
             for (int i = 0; i < elements.size(); i++)
             {
-                retorno[i] = elements.get(i).getText();
+                retorno[i] = elements.get(i).Text;
                 //System.out.print("\""+retorno[i]+"\", ");
             }
 
@@ -70,12 +72,12 @@ public class DragNDropPage extends BasePage
 
 public String[] obterLista()
 {
-    List<MobileElement> elements = getDriver().FindElements(By.ClassName("android.widget.TextView"));
+    List<AppiumWebElement> elements = getDriver().FindElements(By.ClassName("android.widget.TextView"));
     String[] retorno = new String[elements.size()];
 
     for (int i = 0; i < elements.size(); i++)
     {
-        retorno[i] = elements.get(i).getText();
+        retorno[i] = elements.get(i).Text;
         //System.out.print("\""+retorno[i]+"\", ");
     }
 

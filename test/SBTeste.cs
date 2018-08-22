@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using testes_appium_C_sharp.core;
 using testes_appium_C_sharp.page;
+using testes_appium_C_sharp.page.SeuBarriga;
 
 namespace testes_appium_C_sharp.test
 {

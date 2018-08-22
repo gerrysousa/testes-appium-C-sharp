@@ -19,7 +19,7 @@ namespace testes_appium_C_sharp.page
 
         public String obterTextoCampo()
         {
-            return getDriver().FindElement(By.XPath("(//android.widget.TextView)[3]")).getText();
+            return DriverFactory.getDriver().FindElement(By.XPath("(//android.widget.TextView)[3]")).Text;
         }
     }
 }
@@ -43,7 +43,7 @@ public class CliquesPage extends BasePage
 
 public String obterTextoCampo()
 {
-    return getDriver().FindElement(By.XPath("(//android.widget.TextView)[3]")).getText();
+    return getDriver().FindElement(By.XPath("(//android.widget.TextView)[3]")).Text;
 }
 
 }

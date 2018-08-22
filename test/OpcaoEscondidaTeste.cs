@@ -20,8 +20,8 @@ namespace testes_appium_C_sharp.test
         [Test]
     public void deveAcessarOpcaoEscondida()
         {
-            WebDriverWait wait = new WebDriverWait(getDriver(), 10);
-            Wait.Until(ExpectedConditions.presenceOfElementLocated(By.XPath("//*[@text='Formulário']")));
+            WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), TimeSpan.FromSeconds(10));
+            wait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(By.XPath("//*[@text='Formulário']")));
 
             menu.scrollDown();
 
@@ -58,8 +58,8 @@ public class OpcaoEscondidaTeste extends BaseTest
 [Test]
     public void deveAcessarOpcaoEscondida()
 {
-    WebDriverWait wait = new WebDriverWait(getDriver(), 10);
-    Wait.Until(ExpectedConditions.presenceOfElementLocated(By.XPath("//*[@text='Formulário']")));
+    WebDriverWait wait = new WebDriverWait(getDriver(), TimeSpan.FromSeconds(10));
+    Wait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(By.XPath("//*[@text='Formulário']")));
 
     menu.scrollDown();
 

@@ -13,7 +13,7 @@ namespace testes_appium_C_sharp.page
     class WebViewPage : BasePage
     {
         public void entrarContextoWeb()
-        {
+        {/*
             Set<String> contextHandles = DriverFactory.getDriver().getContextHandles();
             for (String valor : contextHandles)
             {
@@ -21,21 +21,22 @@ namespace testes_appium_C_sharp.page
                 System.out.print(contextHandles);
             }
             // getDriver().context((String)contextHandles.toArray()[1]);
+            */
         }
 
         public void setEmail(String email)
         {
-            getDriver().FindElement(By.id("email")).sendKeys(email);
+            DriverFactory.getDriver().FindElement(By.Id("email")).SendKeys(email);
         }
 
         public void setSenha(String senha)
         {
-            getDriver().FindElement(By.id("senha")).sendKeys(senha);
+            DriverFactory.getDriver().FindElement(By.Id("senha")).SendKeys(senha);
         }
 
         public void sairContextoWeb()
         {
-            getDriver().context((String)getDriver().getContextHandles().toArray()[0]);
+           // DriverFactory.getDriver().Context((String)getDriver().getContextHandles().toArray()[0]);
         }
 
         public String getMensagem()
@@ -83,12 +84,12 @@ public class WebViewPage extends BasePage
 
 public void setEmail(String email)
 {
-    getDriver().FindElement(By.id("email")).sendKeys(email);
+    getDriver().FindElement(By.Id("email")).SendKeys(email);
 }
 
 public void setSenha(String senha)
 {
-    getDriver().FindElement(By.id("senha")).sendKeys(senha);
+    getDriver().FindElement(By.Id("senha")).SendKeys(senha);
 }
 
 public void sairContextoWeb()

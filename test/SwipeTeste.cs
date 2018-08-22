@@ -20,8 +20,8 @@ namespace testes_appium_C_sharp.test
         [Test]
     public void deveAcessarSwipe()
         {
-            WebDriverWait wait = new WebDriverWait(getDriver(), 10);
-            Wait.Until(ExpectedConditions.presenceOfElementLocated(By.XPath("//*[@text='Formulário']")));
+            WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), TimeSpan.FromSeconds(10));
+            wait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(By.XPath("//*[@text='Formulário']")));
             menu.scroll(0.9, 0.10);
 
             menu.acessarSwipe();
@@ -69,8 +69,8 @@ public class SwipeTeste extends BaseTest
 [Test]
     public void deveAcessarSwipe()
 {
-    WebDriverWait wait = new WebDriverWait(getDriver(), 10);
-    Wait.Until(ExpectedConditions.presenceOfElementLocated(By.XPath("//*[@text='Formulário']")));
+    WebDriverWait wait = new WebDriverWait(getDriver(), TimeSpan.FromSeconds(10));
+    Wait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(By.XPath("//*[@text='Formulário']")));
     menu.scroll(0.9, 0.10);
 
     menu.acessarSwipe();

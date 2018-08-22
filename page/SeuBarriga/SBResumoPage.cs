@@ -15,7 +15,7 @@ namespace testes_appium_C_sharp.page.SeuBarriga
         public void excluirMovimetacao(String desc)
         {
             AppiumWebElement elm = DriverFactory.getDriver().FindElement(By.XPath("//*[@text='" + desc + "']/.."));
-            SwipeElement(elm, 0.9, 0.1);
+            swipeElement(elm, 0.9, 0.1);
             clicarTexto("Del");
         }
     }

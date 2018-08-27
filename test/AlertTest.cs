@@ -19,13 +19,13 @@ namespace testes_appium_C_sharp.test
         private AlertaPage alerta = new AlertaPage();
 
         [SetUp]
-    public void setup()
+        public void setup()
         {
             menu.acessarAlertas();
         }
 
         [Test]
-    public void deveConfirmarAlerta()
+        public void deveConfirmarAlerta()
         {
             alerta.clicarAlertaConfirm();
 
@@ -40,13 +40,13 @@ namespace testes_appium_C_sharp.test
         }
 
         [Test]
-    public void deveClicarForaAlerta()
+        public void deveClicarForaAlerta()
         {
             alerta.clicarAlertaSimples();
             Assert.True(alerta.existeElementoPorTexto("Pode clicar no OK ou fora da caixa para sair"));
             esperar(1000);
             alerta.clicarForaCaixa();
-
+            
             Assert.False(alerta.existeElementoPorTexto("Pode clicar no OK ou fora da caixa para sair"));
         }
     }

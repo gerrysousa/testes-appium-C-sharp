@@ -34,7 +34,7 @@ namespace testes_appium_C_sharp.page
 
             for (int i = 0; i < elements.Count(); i++)
             {
-                retorno[i] = elements.ElementAt(i).ToString();
+                retorno[i] = elements.ElementAt(i).Text;
                 //System.out.print("\""+retorno[i]+"\", ");
             }
 

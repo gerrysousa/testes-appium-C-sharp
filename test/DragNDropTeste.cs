@@ -25,7 +25,7 @@ namespace testes_appium_C_sharp.test
         [Test]
         public void deveEfetuarDragNDrop()
         {
-            WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), TimeSpan.FromSeconds(10));
+            WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), TimeSpan.FromSeconds(0));
             wait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(By.XPath("//*[@text='Formulário']")));
             menu.scroll(0.9, 0.10);
 
@@ -34,7 +34,7 @@ namespace testes_appium_C_sharp.test
             CollectionAssert.AreEqual(estadoInicial, page.obterLista());
 
             page.arrastar("Esta", "e arraste para");
-            CollectionAssert.AreEqual(estadoIntermediario, page.obterLista()); k
+            CollectionAssert.AreEqual(estadoIntermediario, page.obterLista()); 
     
             page.arrastar("Faça um clique longo,", "é uma lista");
             CollectionAssert.AreEqual(estadoFinal, page.obterLista());

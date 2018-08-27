@@ -23,7 +23,7 @@ namespace testes_appium_C_sharp.test
         private String[] estadoFinal = new String[] { "Faça um clique longo,", "é uma lista", "Drag em Drop!", "e arraste para", "Esta", "qualquer local desejado." };
 
         [Test]
-    public void deveEfetuarDragNDrop()
+        public void deveEfetuarDragNDrop()
         {
             WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), TimeSpan.FromSeconds(10));
             wait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(By.XPath("//*[@text='Formulário']")));
@@ -34,8 +34,8 @@ namespace testes_appium_C_sharp.test
             CollectionAssert.AreEqual(estadoInicial, page.obterLista());
 
             page.arrastar("Esta", "e arraste para");
-            CollectionAssert.AreEqual(estadoIntermediario, page.obterLista());
-
+            CollectionAssert.AreEqual(estadoIntermediario, page.obterLista()); k
+    
             page.arrastar("Faça um clique longo,", "é uma lista");
             CollectionAssert.AreEqual(estadoFinal, page.obterLista());
 

@@ -28,12 +28,13 @@ namespace testes_appium_C_sharp.page
         
         public String[] obterLista()
         {
-            List<AppiumWebElement> elements = DriverFactory.getDriver().FindElements(By.ClassName("android.widget.TextView"));
-            String[] retorno = new String[elements.size()];
+            //List<AppiumWebElement> elements = DriverFactory.getDriver().FindElements(By.ClassName("android.widget.TextView"));
+            IList<AppiumWebElement> elements = DriverFactory.getDriver().FindElementsByClassName("android.widget.TextView");
+            String[] retorno = new String[elements.Count()];
 
-            for (int i = 0; i < elements.size(); i++)
+            for (int i = 0; i < elements.Count(); i++)
             {
-                retorno[i] = elements.get(i).Text;
+                retorno[i] = elements.ElementAt(i).ToString();
                 //System.out.print("\""+retorno[i]+"\", ");
             }
 

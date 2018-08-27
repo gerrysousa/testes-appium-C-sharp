@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Interfaces;
+using OpenQA.Selenium.Appium.MultiTouch;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +27,7 @@ namespace testes_appium_C_sharp.page
         {
             AppiumWebElement botao = DriverFactory.getDriver().FindElement(By.XPath("//*[@text='(+)']/.."));
 
-            new TouchAction(DriverFactory.getDriver()).tap(botao, -50, 0).perform();
+            new TouchAction(DriverFactory.getDriver()).Tap(botao, -50, 0).Perform();
         }
     }
 }

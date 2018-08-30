@@ -19,13 +19,13 @@ namespace testes_appium_C_sharp.test
         private CliquesPage page = new CliquesPage();
 
         [SetUp]
-    public void setup()
+        public void setup()
         {
             menu.acessarCliques();
         }
 
         [Test]
-    public void deveRealizarCliqueLongo()
+        public void deveRealizarCliqueLongo()
         {
             page.cliqueLongo();
 
@@ -33,7 +33,7 @@ namespace testes_appium_C_sharp.test
         }
 
         [Test]
-    public void deveRealizarCliqueDuplo()
+        public void deveRealizarCliqueDuplo()
         {
             page.clicarTexto("Clique duplo");
             page.clicarTexto("Clique duplo");
@@ -42,6 +42,7 @@ namespace testes_appium_C_sharp.test
         }
     }
 }
+
 /*
 package br.ce.gsousa.appium.test;
 

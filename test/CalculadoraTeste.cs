@@ -19,31 +19,31 @@ namespace testes_appium_C_sharp.test
     class CalculadoraTeste : BaseTest
     {
         [Test]
-    public void deveSomarDoisValores() 
+        public void deveSomarDoisValores()
         {
             DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-        desiredCapabilities.SetCapability("platformName", "Android");
-	    desiredCapabilities.SetCapability("deviceName", "emulator-5554");
-	    desiredCapabilities.SetCapability("automationName", "uiautomator2");
-	    desiredCapabilities.SetCapability("appPackage", "com.android.calculator2");
-	    desiredCapabilities.SetCapability("appActivity", "com.android.calculator2.Calculator");
+            desiredCapabilities.SetCapability("platformName", "Android");
+            desiredCapabilities.SetCapability("deviceName", "emulator-5554");
+            desiredCapabilities.SetCapability("automationName", "uiautomator2");
+            desiredCapabilities.SetCapability("appPackage", "com.android.calculator2");
+            desiredCapabilities.SetCapability("appActivity", "com.android.calculator2.Calculator");
 
             AndroidDriver<AppiumWebElement> driver = new AndroidDriver<AppiumWebElement>(new Uri("http://localhost:4723/wd/hub"), desiredCapabilities);
 
             AppiumWebElement el3 = (AppiumWebElement)driver.FindElementById("com.android.calculator2:id/digit_2");
-        el3.Click();
-	    AppiumWebElement el4 = (AppiumWebElement)driver.FindElementByAccessibilityId("plus");
-        el4.Click();
-	    AppiumWebElement el5 = (AppiumWebElement)driver.FindElementById("com.android.calculator2:id/digit_2");
-        el5.Click();
-	    AppiumWebElement el6 = (AppiumWebElement)driver.FindElementById("com.android.calculator2:id/result");
+            el3.Click();
+            AppiumWebElement el4 = (AppiumWebElement)driver.FindElementByAccessibilityId("plus");
+            el4.Click();
+            AppiumWebElement el5 = (AppiumWebElement)driver.FindElementById("com.android.calculator2:id/digit_2");
+            el5.Click();
+            AppiumWebElement el6 = (AppiumWebElement)driver.FindElementById("com.android.calculator2:id/result");
 
-        //System.out.print(el6.Text);
+            //System.out.print(el6.Text);
 
-        Assert.AreEqual("4", el6.Text);
-	    driver.Quit();
-	}
-}
+            Assert.AreEqual("4", el6.Text);
+            driver.Quit();
+        }
+    }
 }
 
 /*

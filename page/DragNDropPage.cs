@@ -24,6 +24,9 @@ namespace testes_appium_C_sharp.page
                     .MoveTo(fim)
                     .Release()
                     .Perform();
+
+
+           
         }
         
         public String[] obterLista()

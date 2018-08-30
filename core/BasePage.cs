@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using testes_appium_C_sharp.core;
 
@@ -154,36 +155,55 @@ namespace testes_appium_C_sharp.core
 
         public void cliqueLongo(By by)
         {
-            new TouchAction(DriverFactory.getDriver())
-           .Press(DriverFactory.getDriver().FindElement(by))
-           .Wait(TimeSpan.FromMilliseconds(3000).Milliseconds)
-           .Release()
-           .Perform();
+           // TouchAction action = new TouchAction(DriverFactory.getDriver());
+            //action.Press(DriverFactory.getDriver().FindElement(by)).Release().Perform();
+
+            AppiumWebElement teste = DriverFactory.getDriver().FindElement(by);
+           // AppiumWebElement fim = DriverFactory.getDriver().FindElement(By.XPath("//*[@text='" + destino + "']"));
+
+            //var appiumDriver; //you've instantiated it somehow
+            if (teste != null)
+            {
+                new TouchAction(DriverFactory.getDriver())
+                .LongPress(teste) //i've tried using coordinates as well
+                .Release();//.Perform();
+                Thread.Sleep(2000);
+                return;
+            }
 
 
+            // new TouchAction(DriverFactory.getDriver()).LongPress(DriverFactory.getDriver().FindElement(by), 0.5, 0.5 ).Perform();
+            /*
+                        new TouchAction(DriverFactory.getDriver())
+                       .Press(DriverFactory.getDriver().FindElement(by))
+                       .Wait(TimeSpan.FromMilliseconds(3000).Milliseconds)
+                       .Release()
+                       .Perform();
+
+                        */
 
             //new TouchAction(getDriver()).longPress(getDriver().FindElement(by)).perform();
             //TouchActions action = 
             //               new TouchActions(DriverFactory.getDriver())
             //         .LongPress(DriverFactory.getDriver().FindElement(by)).Release().Perform();
 
-  //          ITouchAction touchAction = new TouchAction(DriverFactory.getDriver())
-    //        .LongPress(DriverFactory.getDriver().FindElement(by))
+            //          ITouchAction touchAction = new TouchAction(DriverFactory.getDriver())
+            //        .LongPress(DriverFactory.getDriver().FindElement(by))
             //.Wait(TimeSpan.FromMilliseconds(2000).Milliseconds)
             //.MoveTo(endX, endY)
-     //       .Release();
+            //       .Release();
 
-       //     touchAction.Perform();
+            //     touchAction.Perform();
 
-/*
-            ITouchAction touchAction = new TouchAction(DriverFactory.getDriver())
-   .Press(startX, startY)
-   .Wait(duration)
-   .MoveTo(endX, endY)
-   .Release();
+            /*
+                        ITouchAction touchAction = new TouchAction(DriverFactory.getDriver())
+               .Press(startX, startY)
+               .Wait(duration)
+               .MoveTo(endX, endY)
+               .Release();
 
-            touchAction.Perform();
-            */
+                        touchAction.Perform();
+                        */
 
             // new TouchAction(DriverFactory.getDriver())
             //   .LongPress(DriverFindElement(by))

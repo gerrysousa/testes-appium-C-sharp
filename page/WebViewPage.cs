@@ -13,15 +13,18 @@ namespace testes_appium_C_sharp.page
     class WebViewPage : BasePage
     {
         public void entrarContextoWeb()
-        {/*
-            Set<String> contextHandles = DriverFactory.getDriver().getContextHandles();
-            for (String valor : contextHandles)
-            {
-                System.out.print(valor);
-                System.out.print(contextHandles);
-            }
+        {
+            var contextNames = DriverFactory.getDriver().Contexts;
+            
+            //ISet<String> 
+             // string  contextHandles = (DriverFactory.getDriver().Contexts).ToString();
+           // for (String valor : contextHandles)
+            //{
+                //System.out.print(valor);
+                //System.out.print(contextHandles);
+           // }
             // getDriver().context((String)contextHandles.toArray()[1]);
-            */
+
         }
 
         public void setEmail(String email)

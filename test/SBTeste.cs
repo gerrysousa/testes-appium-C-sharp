@@ -22,8 +22,9 @@ namespace testes_appium_C_sharp.test
         private SBMovimentacaoPage mov = new SBMovimentacaoPage();
         private SBHomePage home = new SBHomePage();
         private SBResumoPage resumo = new SBResumoPage();
+
         [SetUp]
-    public void setup()
+        public void setup()
         {
             menu.acessaSBNativo();
             login.setEmail("em@em");
@@ -32,7 +33,7 @@ namespace testes_appium_C_sharp.test
         }
 
         [Test]
-    public void deveInserirContaComSucesso()
+        public void deveInserirContaComSucesso()
         {
             menuSb.acessarContas();
             contasSb.setConta("Conta de Teste");
@@ -43,7 +44,7 @@ namespace testes_appium_C_sharp.test
         }
 
         [Test]
-    public void deveExcluirContaComSucesso()
+        public void deveExcluirContaComSucesso()
         {
             menuSb.acessarContas();
             contasSb.selecionarContas("Conta para alterar");
@@ -53,7 +54,7 @@ namespace testes_appium_C_sharp.test
         }
 
         [Test]
-    public void deveValidarInclusaoMov()
+        public void deveValidarInclusaoMov()
         {
             menuSb.acessarMovimentacoes();
 
@@ -78,7 +79,7 @@ namespace testes_appium_C_sharp.test
         }
 
         [Test]
-    public void deveAtualizarSaldoAoExcluirMovimentacao()
+        public void deveAtualizarSaldoAoExcluirMovimentacao()
         {
             Assert.AreEqual("534.00", home.obterSaldoConta("Conta para saldo"));
 

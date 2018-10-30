@@ -1,20 +1,48 @@
-﻿using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
+using OpenQA.Selenium.Appium;
+using OpenQA.Selenium.Appium.Android;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OpenQA.Selenium.Appium.Interfaces;
+using System.IO;
 using testes_appium_C_sharp.core;
+using NUnit.Framework;
 using testes_appium_C_sharp.page;
 
 
 namespace testes_appium_C_sharp.test
 {
-    class CalculadoraTesteMotoG
+    class CalculadoraTesteMotoG : BaseTest
     {
+        [Test]
+        public void deveSomarDoisValoress()
+        {
+            DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+            desiredCapabilities.SetCapability("platformName", "Android");
+            desiredCapabilities.SetCapability("deviceName", "0030260344");
+            desiredCapabilities.SetCapability("automationName", "uiautomator2");
+            desiredCapabilities.SetCapability("appPackage", "com.google.android.calculator");
+            desiredCapabilities.SetCapability("appActivity", "com.android.calculator2.CalculatorGoogle");
+
+            AndroidDriver<AppiumWebElement> driver = new AndroidDriver<AppiumWebElement>(new Uri("http://localhost:4723/wd/hub"), desiredCapabilities);
+
+            AppiumWebElement el1 = (AppiumWebElement)driver.FindElementById("com.google.android.calculator:id/digit_4");
+            el1.Click();
+            el1.Click();
+            AppiumWebElement el2 = (AppiumWebElement)driver.FindElementByAccessibilityId("mais");
+            el2.Click();
+            AppiumWebElement el3 = (AppiumWebElement)driver.FindElementById("com.google.android.calculator:id/digit_4");
+            el3.Click();
+            AppiumWebElement el4 = (AppiumWebElement)driver.FindElementById("com.google.android.calculator:id/result");
+
+            Assert.AreEqual("8", el4.Text);
+            driver.Quit();
+        }
     }
 }
 /*
@@ -34,7 +62,7 @@ import io.appium.java_client.android.AndroidDriver;
 public class CalculadoraTesteMotoG
 {
 
-    @Test
+    [Test]
     public void deveSomarDoisValoress() throws MalformedURLException
     {
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
@@ -46,16 +74,16 @@ public class CalculadoraTesteMotoG
 	    	    
 	    AndroidDriver<MobileElement> driver = new AndroidDriver<MobileElement>(new URL("http://localhost:4723/wd/hub"), desiredCapabilities);
 
-    MobileElement el1 = (MobileElement)driver.findElementById("com.google.android.calculator:id/digit_4");
+    AppiumWebElement el1 = (MobileElement)driver.FindElementById("com.google.android.calculator:id/digit_4");
     el1.click();
 	    el1.click();
-	    MobileElement el2 = (MobileElement)driver.findElementByAccessibilityId("mais");
+	    AppiumWebElement el2 = (MobileElement)driver.FindElementByAccessibilityId("mais");
     el2.click();
-	    MobileElement el3 = (MobileElement)driver.findElementById("com.google.android.calculator:id/digit_4");
+	    AppiumWebElement el3 = (MobileElement)driver.FindElementById("com.google.android.calculator:id/digit_4");
     el3.click();
-	    MobileElement el4 = (MobileElement)driver.findElementById("com.google.android.calculator:id/result");
+	    AppiumWebElement el4 = (MobileElement)driver.FindElementById("com.google.android.calculator:id/result");
 
-    Assert.assertEquals("8", el4.getText());
+    Assert.AreEqual("8", el4.Text);
 	    driver.quit();
 	}
 }

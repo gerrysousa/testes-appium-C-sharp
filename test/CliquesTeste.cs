@@ -13,10 +13,36 @@ using testes_appium_C_sharp.page;
 
 namespace testes_appium_C_sharp.test
 {
-    class CliquesTeste
+    class CliquesTeste : BaseTest
     {
+        private MenuPage menu = new MenuPage();
+        private CliquesPage page = new CliquesPage();
+
+        [SetUp]
+        public void setup()
+        {
+            menu.acessarCliques();
+        }
+
+        [Test]
+        public void deveRealizarCliqueLongo()
+        {
+            page.cliqueLongo();
+
+            Assert.AreEqual("Clique Longo", page.obterTextoCampo());
+        }
+
+        [Test]
+        public void deveRealizarCliqueDuplo()
+        {
+            page.clicarTexto("Clique duplo");
+            page.clicarTexto("Clique duplo");
+
+            Assert.AreEqual("Duplo Clique", page.obterTextoCampo());
+        }
     }
 }
+
 /*
 package br.ce.gsousa.appium.test;
 
@@ -35,27 +61,27 @@ public class CliquesTeste extends BaseTest
     private MenuPage menu = new MenuPage();
 private CliquesPage page = new CliquesPage();
 
-@Before
+[SetUp]
     public void setup()
 {
     menu.acessarCliques();
 }
 
-@Test
+[Test]
     public void deveRealizarCliqueLongo()
 {
     page.cliqueLongo();
 
-    Assert.assertEquals("Clique Longo", page.obterTextoCampo());
+    Assert.AreEqual("Clique Longo", page.obterTextoCampo());
 }
 
-@Test
+[Test]
     public void deveRealizarCliqueDuplo()
 {
     page.clicarTexto("Clique duplo");
     page.clicarTexto("Clique duplo");
 
-    Assert.assertEquals("Duplo Clique", page.obterTextoCampo());
+    Assert.AreEqual("Duplo Clique", page.obterTextoCampo());
 }
 }
 

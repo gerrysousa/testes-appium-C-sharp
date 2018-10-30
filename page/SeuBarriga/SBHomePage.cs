@@ -1,13 +1,21 @@
-﻿using System;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Appium;
+using OpenQA.Selenium.Appium.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using testes_appium_C_sharp.core;
 
 namespace testes_appium_C_sharp.page.SeuBarriga
 {
-    class SBHomePage
+    class SBHomePage : BasePage
     {
+        public String obterSaldoConta(String conta)
+        {
+            return obterTexto(By.XPath("//*[@text='" + conta + "']/following-sibling::android.widget.TextView"));
+        }
     }
 }
 /*
@@ -23,7 +31,7 @@ public class SBHomePage extends BasePage
 
     public String obterSaldoConta(String conta)
 {
-    return obterTexto(By.xpath("//*[@text='" + conta + "']/following-sibling::android.widget.TextView"));
+    return obterTexto(By.XPath("//*[@text='" + conta + "']/following-sibling::android.widget.TextView"));
 }
 
 }

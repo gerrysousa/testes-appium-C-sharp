@@ -13,8 +13,27 @@ using testes_appium_C_sharp.page;
 
 namespace testes_appium_C_sharp.test
 {
-    class WebViewTeste
+    class WebViewTeste : BaseTest
     {
+        private MenuPage menu = new MenuPage();
+        private WebViewPage page = new WebViewPage();
+
+        [Test]
+    public void deveFazerLogin()
+        {
+            menu.acessaSBHibrido();
+            esperar(6000);
+            page.entrarContextoWeb();
+
+            page.setEmail("em@em ");
+            page.setSenha("1");
+            page.entrar();
+            esperar(6000);
+
+            //System.out.print(DriverFactory.getDriver().getPageSource());
+            //Assert.AreEqual("Bem vindo, teste!", page.getMensagem());	
+            Assert.True(page.getMensagem2("Bem vindo, teste!"));
+        }
     }
 }
 /*
@@ -34,7 +53,7 @@ public class WebViewTeste extends BaseTest
     private MenuPage menu = new MenuPage();
 private WebViewPage page = new WebViewPage();
 
-@Test
+[Test]
     public void deveFazerLogin()
 {
     menu.acessaSBHibrido();
@@ -47,8 +66,8 @@ private WebViewPage page = new WebViewPage();
     esperar(6000);
 
     //System.out.print(DriverFactory.getDriver().getPageSource());
-    //Assert.assertEquals("Bem vindo, teste!", page.getMensagem());	
-    Assert.assertTrue(page.getMensagem2("Bem vindo, teste!"));
+    //Assert.AreEqual("Bem vindo, teste!", page.getMensagem());	
+    Assert.True(page.getMensagem2("Bem vindo, teste!"));
 }
 
 }

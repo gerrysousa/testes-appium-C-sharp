@@ -13,8 +13,42 @@ using testes_appium_C_sharp.page;
 
 namespace testes_appium_C_sharp.test
 {
-    class AlertTest
+    class AlertTest : BaseTest
     {
+        private MenuPage menu = new MenuPage();
+        private AlertaPage alerta = new AlertaPage();
+
+        [SetUp]
+        public void setup()
+        {
+            menu.acessarAlertas();
+        }
+
+        [Test]
+        public void deveConfirmarAlerta()
+        {
+            alerta.clicarAlertaConfirm();
+
+            Assert.AreEqual("Info", alerta.obterTituloAlerta());
+            Assert.AreEqual("Confirma a operação?", alerta.obterMensageAlerta());
+
+            alerta.confirmar();
+
+            Assert.AreEqual("Confirmado", alerta.obterMensageAlerta());
+
+            alerta.sair();
+        }
+
+        [Test]
+        public void deveClicarForaAlerta()
+        {
+            alerta.clicarAlertaSimples();
+            Assert.True(alerta.existeElementoPorTexto("Pode clicar no OK ou fora da caixa para sair"));
+            esperar(1000);
+            alerta.clicarForaCaixa();
+            
+            Assert.False(alerta.existeElementoPorTexto("Pode clicar no OK ou fora da caixa para sair"));
+        }
     }
 }
 
@@ -36,36 +70,36 @@ public class AlertTest extends BaseTest
     private MenuPage menu = new MenuPage();
 private AlertaPage alerta = new AlertaPage();
 
-@Before
+[SetUp]
     public void setup()
 {
     menu.acessarAlertas();
 }
 
-@Test
+[Test]
     public void deveConfirmarAlerta()
 {
     alerta.clicarAlertaConfirm();
 
-    Assert.assertEquals("Info", alerta.obterTituloAlerta());
-    Assert.assertEquals("Confirma a operação?", alerta.obterMensageAlerta());
+    Assert.AreEqual("Info", alerta.obterTituloAlerta());
+    Assert.AreEqual("Confirma a operação?", alerta.obterMensageAlerta());
 
     alerta.confirmar();
 
-    Assert.assertEquals("Confirmado", alerta.obterMensageAlerta());
+    Assert.AreEqual("Confirmado", alerta.obterMensageAlerta());
 
     alerta.sair();
 }
 
-@Test
+[Test]
     public void deveClicarForaAlerta()
 {
     alerta.clicarAlertaSimples();
-    Assert.assertTrue(alerta.existeElementoPorTexto("Pode clicar no OK ou fora da caixa para sair"));
+    Assert.True(alerta.existeElementoPorTexto("Pode clicar no OK ou fora da caixa para sair"));
     esperar(1000);
     alerta.clicarForaCaixa();
 
-    Assert.assertFalse(alerta.existeElementoPorTexto("Pode clicar no OK ou fora da caixa para sair"));
+    Assert.False(alerta.existeElementoPorTexto("Pode clicar no OK ou fora da caixa para sair"));
 }
 
 }

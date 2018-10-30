@@ -15,34 +15,34 @@ namespace testes_appium_C_sharp.core
 {
     public class DriverFactory
     {
-        private static AppiumDriver<AppiumWebElement> driver;    
+        private static AppiumDriver<AppiumWebElement> driver;
 
         public static AppiumDriver<AppiumWebElement> getDriver()
         {
             if (driver == null)
             {
-                 createDrive();
-               // createTestObjectDrive();
+                createDrive();
+                // createTestObjectDrive();
             }
             return driver;
         }
 
         private static void createDrive()
         {
-               //String apkCaminho = new File(@"dadsadfsa").getCanonicalPath();
+            //String apkCaminho = new File(@"dadsadfsa").getCanonicalPath();
 
-                DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-                desiredCapabilities.SetCapability("platformName", "Android");
-                desiredCapabilities.SetCapability("deviceName", "emulator-5554");
-                desiredCapabilities.SetCapability("automationName", "uiAutomator2");
-                //desiredCapabilities.SetCapability("appPackage", "com.");
-                desiredCapabilities.SetCapability(OpenQA.Selenium.Appium.Enums.MobileCapabilityType.App, @"D:\Treinamento\testes-appium-C-sharp\resources\CTAppium-1-1.apk");
+            DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+            desiredCapabilities.SetCapability("platformName", "Android");
+            desiredCapabilities.SetCapability("deviceName", "emulator-5554");
+            desiredCapabilities.SetCapability("automationName", "uiAutomator2");
+            //desiredCapabilities.SetCapability("appPackage", "com.");
+            desiredCapabilities.SetCapability(OpenQA.Selenium.Appium.Enums.MobileCapabilityType.App, @"D:\Treinamento\testes-appium-C-sharp\resources\CTAppium-1-1.apk");
 
             // desiredCapabilities.SetCapability(MobileCapabilityType.APP, apkCaminho);
 
             driver = new AndroidDriver<AppiumWebElement>(new Uri("http://localhost:4723/wd/hub"), desiredCapabilities);
-               
-                driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));          
+
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
         }
 
         private static void createTestObjectDrive()
@@ -53,9 +53,9 @@ namespace testes_appium_C_sharp.core
             desiredCapabilities.SetCapability("appiumVersion", "1.7.2");
             desiredCapabilities.SetCapability("language", "pt");
             desiredCapabilities.SetCapability("automationName", "uiAutomator2");
-            
+
             driver = new AndroidDriver<AppiumWebElement>(new Uri("https://eu1.appium.testobject.com/wd/hub"), desiredCapabilities);
-           
+
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
 
         }
@@ -120,7 +120,7 @@ public class DriverFactory
             {
                 e.printStackTrace();
             }
-            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+            driver.Manage().Timeouts().ImplicitlyWait(10, TimeUnit.SECONDS);
 
         }
         catch (IOException e1)
@@ -149,7 +149,7 @@ public class DriverFactory
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.Manage().Timeouts().ImplicitlyWait(10, TimeUnit.SECONDS);
 
     }
 

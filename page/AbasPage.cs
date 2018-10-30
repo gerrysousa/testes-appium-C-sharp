@@ -10,8 +10,33 @@ using testes_appium_C_sharp.core;
 
 namespace testes_appium_C_sharp.page
 {
-    class AbasPage
+    class AbasPage : BasePage
     {
+        public bool isAba1()
+        {
+            return existeElementoPorTexto("Este é o conteúdo da Aba 1");
+        }
+
+        public bool isAba2()
+        {
+            return existeElementoPorTexto("Este é o conteúdo da Aba 2");
+        }
+
+        public void deveClicarAba1()
+        {
+            clicarTexto("ABA 1");
+        }
+
+        public void deveClicarAba2()
+        {
+            clicarTexto("ABA 2");
+        }
+
+
+        public String obterConteudo()
+        {
+            return obterTexto(By.XPath("//android.view.ViewGroup/android.widget.TextView"));
+        }
     }
 }
 /*
@@ -25,12 +50,12 @@ public class AbasPage extends BasePage
 {
 
 
-    public boolean isAba1()
+    public bool isAba1()
 {
     return existeElementoPorTexto("Este é o conteúdo da Aba 1");
 }
 
-public boolean isAba2()
+public bool isAba2()
 {
     return existeElementoPorTexto("Este é o conteúdo da Aba 2");
 }
@@ -48,7 +73,7 @@ public void deveClicarAba2()
 
 public String obterConteudo()
 {
-    return obterTexto(By.xpath("//android.view.ViewGroup/android.widget.TextView"));
+    return obterTexto(By.XPath("//android.view.ViewGroup/android.widget.TextView"));
 }
 	
 }

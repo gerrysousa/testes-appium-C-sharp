@@ -13,8 +13,22 @@ using testes_appium_C_sharp.page;
 
 namespace testes_appium_C_sharp.test
 {
-    class AccordionTeste
+    class AccordionTeste : BaseTest
     {
+        private MenuPage menu = new MenuPage();
+        private AccordionPage page = new AccordionPage();
+
+        [Test]
+    public void deveInteragirComAccordion()
+        {
+
+            menu.acessarAccordion();
+            page.selecionarOpc1();
+            esperar(1000);
+
+            Assert.AreEqual("Esta é a descrição da opção 1", page.obterValorOpc1());
+
+        }
     }
 }
 /*
@@ -34,7 +48,7 @@ public class AccordionTeste extends BaseTest
     private MenuPage menu = new MenuPage();
 private AccordionPage page = new AccordionPage();
 
-@Test
+[Test]
     public void deveInteragirComAccordion()
 {
 
@@ -42,7 +56,7 @@ private AccordionPage page = new AccordionPage();
     page.selecionarOpc1();
     esperar(1000);
 
-    Assert.assertEquals("Esta é a descrição da opção 1", page.obterValorOpc1());
+    Assert.AreEqual("Esta é a descrição da opção 1", page.obterValorOpc1());
 
 }
 }

@@ -13,8 +13,33 @@ using testes_appium_C_sharp.page;
 
 namespace testes_appium_C_sharp.test
 {
-    class DragNDropTeste
+    class DragNDropTeste : BaseTest
     {
+        private MenuPage menu = new MenuPage();
+        private DragNDropPage page = new DragNDropPage();
+
+        private String[] estadoInicial = new String[] { "Esta", "é uma lista", "Drag em Drop!", "Faça um clique longo,", "e arraste para", "qualquer local desejado." };
+        private String[] estadoIntermediario = new String[] { "é uma lista", "Drag em Drop!", "Faça um clique longo,", "e arraste para", "Esta", "qualquer local desejado." };
+        private String[] estadoFinal = new String[] { "Faça um clique longo,", "é uma lista", "Drag em Drop!", "e arraste para", "Esta", "qualquer local desejado." };
+
+        [Test]
+        public void deveEfetuarDragNDrop()
+        {
+            WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), TimeSpan.FromSeconds(0));
+            wait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(By.XPath("//*[@text='Formulário']")));
+            menu.scroll(0.9, 0.10);
+
+            menu.acessarDragNDrop();
+            esperar(1000);
+            CollectionAssert.AreEqual(estadoInicial, page.obterLista());
+
+            page.arrastar("Esta", "e arraste para");
+            CollectionAssert.AreEqual(estadoIntermediario, page.obterLista()); 
+    
+            page.arrastar("Faça um clique longo,", "é uma lista");
+            CollectionAssert.AreEqual(estadoFinal, page.obterLista());
+
+        }
     }
 }
 /*
@@ -43,12 +68,12 @@ private String[] estadoInicial = new String[] { "Esta", "é uma lista", "Drag em
 private String[] estadoIntermediario = new String[] { "é uma lista", "Drag em Drop!", "Faça um clique longo,", "e arraste para", "Esta", "qualquer local desejado." };
 private String[] estadoFinal = new String[] { "Faça um clique longo,", "é uma lista", "Drag em Drop!", "e arraste para", "Esta", "qualquer local desejado." };
 
-@Test
+[Test]
     public void deveEfetuarDragNDrop()
 {
-    WebDriverWait wait = new WebDriverWait(getDriver(), 10);
-    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@text='Formulário']")));
-    menu.scroll(0.9, 0.10);
+    WebDriverWait wait = new WebDriverWait(getDriver(), TimeSpan.FromSeconds(10));
+    wait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(By.XPath("//*[@text='Formulário']")));
+    menu.scroll(0.9, 0.TimeSpan.FromSeconds(10));
 
     menu.acessarDragNDrop();
     esperar(1000);

@@ -1,13 +1,23 @@
-﻿using System;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Appium;
+using OpenQA.Selenium.Appium.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using testes_appium_C_sharp.core;
 
 namespace testes_appium_C_sharp.page.SeuBarriga
 {
-    class SBResumoPage
+    class SBResumoPage : BasePage
     {
+        public void excluirMovimetacao(String desc)
+        {
+            AppiumWebElement elm = DriverFactory.getDriver().FindElement(By.XPath("//*[@text='" + desc + "']/.."));
+            swipeElement(elm, 0.9, 0.1);
+            clicarTexto("Del");
+        }
     }
 }
 /*
@@ -25,7 +35,7 @@ public class SBResumoPage extends BasePage
 
     public void excluirMovimetacao(String desc)
 {
-    MobileElement elm = DriverFactory.getDriver().findElement(By.xpath("//*[@text='" + desc + "']/.."));
+    AppiumWebElement elm = DriverFactory.getDriver().FindElement(By.XPath("//*[@text='" + desc + "']/.."));
     swipeElement(elm, 0.9, 0.1);
     clicarTexto("Del");
 }

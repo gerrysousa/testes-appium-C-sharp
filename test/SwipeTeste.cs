@@ -13,8 +13,37 @@ using testes_appium_C_sharp.page;
 
 namespace testes_appium_C_sharp.test
 {
-    class SwipeTeste
+    class SwipeTeste : BaseTest
     {
+        private MenuPage menu = new MenuPage();
+
+        [Test]
+    public void deveAcessarSwipe()
+        {
+            WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), TimeSpan.FromSeconds(10));
+            wait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(By.XPath("//*[@text='Formulário']")));
+            menu.scroll(0.9, 0.10);
+
+            menu.acessarSwipe();
+            Assert.True(menu.existeElementoPorTexto("a esquerda"));
+
+            menu.swipeRight();
+            esperar(1000);
+            Assert.True(menu.existeElementoPorTexto("E veja se"));
+
+            menu.clicarTexto("›");
+            esperar(3000);
+            //Assert.True(menu.existeElementoPorTexto("fim"));
+
+            menu.clicarTexto("‹");
+            esperar(1000);
+            Assert.True(menu.existeElementoPorTexto("E veja se"));
+
+            menu.swipeLeft();
+            esperar(1000);
+            Assert.True(menu.existeElementoPorTexto("a esquerda"));
+
+        }
     }
 }
 /*
@@ -37,31 +66,31 @@ public class SwipeTeste extends BaseTest
 
     private MenuPage menu = new MenuPage();
 
-@Test
+[Test]
     public void deveAcessarSwipe()
 {
-    WebDriverWait wait = new WebDriverWait(getDriver(), 10);
-    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@text='Formulário']")));
+    WebDriverWait wait = new WebDriverWait(getDriver(), TimeSpan.FromSeconds(10));
+    Wait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(By.XPath("//*[@text='Formulário']")));
     menu.scroll(0.9, 0.10);
 
     menu.acessarSwipe();
-    Assert.assertTrue(menu.existeElementoPorTexto("a esquerda"));
+    Assert.True(menu.existeElementoPorTexto("a esquerda"));
 
     menu.swipeRight();
     esperar(1000);
-    Assert.assertTrue(menu.existeElementoPorTexto("E veja se"));
+    Assert.True(menu.existeElementoPorTexto("E veja se"));
 
     menu.clicarTexto("›");
     esperar(3000);
-    //Assert.assertTrue(menu.existeElementoPorTexto("fim"));
+    //Assert.True(menu.existeElementoPorTexto("fim"));
 
     menu.clicarTexto("‹");
     esperar(1000);
-    Assert.assertTrue(menu.existeElementoPorTexto("E veja se"));
+    Assert.True(menu.existeElementoPorTexto("E veja se"));
 
     menu.swipeLeft();
     esperar(1000);
-    Assert.assertTrue(menu.existeElementoPorTexto("a esquerda"));
+    Assert.True(menu.existeElementoPorTexto("a esquerda"));
 
 }
 }

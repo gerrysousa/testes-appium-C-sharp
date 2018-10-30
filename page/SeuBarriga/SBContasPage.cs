@@ -1,13 +1,36 @@
-﻿using System;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Appium;
+using OpenQA.Selenium.Appium.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using testes_appium_C_sharp.core;
 
 namespace testes_appium_C_sharp.page.SeuBarriga
 {
-    class SBContasPage
+    class SBContasPage : BasePage
     {
+        public void setConta(String nome)
+        {
+            escrever(By.ClassName("android.widget.EditText"), nome);
+        }
+
+        public void salvar()
+        {
+            clicarTexto("SALVAR");
+        }
+
+        public void selecionarContas(String conta)
+        {
+            cliqueLongo(By.XPath("//*[@text='" + conta + "']"));
+        }
+
+        public void excluir()
+        {
+            clicarTexto("EXCLUIR");
+        }
     }
 }
 /*
@@ -23,7 +46,7 @@ public class SBContasPage extends BasePage
 
     public void setConta(String nome)
 {
-    escrever(By.className("android.widget.EditText"), nome);
+    escrever(By.ClassName("android.widget.EditText"), nome);
 }
 
 public void salvar()
@@ -33,7 +56,7 @@ public void salvar()
 
 public void selecionarContas(String conta)
 {
-    cliqueLongo(By.xpath("//*[@text='" + conta + "']"));
+    cliqueLongo(By.XPath("//*[@text='" + conta + "']"));
 }
 
 public void excluir()

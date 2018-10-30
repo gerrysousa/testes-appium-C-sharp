@@ -10,8 +10,52 @@ using testes_appium_C_sharp.core;
 
 namespace testes_appium_C_sharp.page
 {
-    class WebViewPage
+    class WebViewPage : BasePage
     {
+        public void entrarContextoWeb()
+        {
+            var contextNames = DriverFactory.getDriver().Contexts;
+            
+            //ISet<String> 
+             // string  contextHandles = (DriverFactory.getDriver().Contexts).ToString();
+           // for (String valor : contextHandles)
+            //{
+                //System.out.print(valor);
+                //System.out.print(contextHandles);
+           // }
+            // getDriver().context((String)contextHandles.toArray()[1]);
+
+        }
+
+        public void setEmail(String email)
+        {
+            DriverFactory.getDriver().FindElement(By.Id("email")).SendKeys(email);
+        }
+
+        public void setSenha(String senha)
+        {
+            DriverFactory.getDriver().FindElement(By.Id("senha")).SendKeys(senha);
+        }
+
+        public void sairContextoWeb()
+        {
+           // DriverFactory.getDriver().Context((String)getDriver().getContextHandles().toArray()[0]);
+        }
+
+        public String getMensagem()
+        {
+            return obterTexto(By.XPath("//* /div[@class='alert alert-sucess']"));
+        }
+
+        public bool getMensagem2(String texto)
+        {
+            return existeElementoPorTexto(texto);
+        }
+
+        public void entrar()
+        {
+            clicarTexto("Entrar");
+        }
     }
 }
 /*
@@ -43,12 +87,12 @@ public class WebViewPage extends BasePage
 
 public void setEmail(String email)
 {
-    getDriver().findElement(By.id("email")).sendKeys(email);
+    getDriver().FindElement(By.Id("email")).SendKeys(email);
 }
 
 public void setSenha(String senha)
 {
-    getDriver().findElement(By.id("senha")).sendKeys(senha);
+    getDriver().FindElement(By.Id("senha")).SendKeys(senha);
 }
 
 public void sairContextoWeb()
@@ -58,10 +102,10 @@ public void sairContextoWeb()
 
 public String getMensagem()
 {
-    return obterTexto(By.xpath("//* /div[@class='alert alert-sucess']"));
+    return obterTexto(By.XPath("//* /div[@class='alert alert-sucess']"));
 }
 
-public boolean getMensagem2(String texto)
+public bool getMensagem2(String texto)
 {
     return existeElementoPorTexto(texto);
 }

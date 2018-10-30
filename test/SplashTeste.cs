@@ -12,8 +12,22 @@ using testes_appium_C_sharp.page;
 
 namespace testes_appium_C_sharp.test
 {
-    class SplashTeste
+    class SplashTeste : BaseTest
     {
+        private MenuPage menu = new MenuPage();
+        private SplashPage splash = new SplashPage();
+
+        [Test]
+    public void deveAguardarSplashSumir()
+        {
+            menu.acessarSplash();
+            splash.isTelaSplashVisivel();
+            splash.aguardarSplashSumir();
+
+            Assert.True(splash.existeElementoPorTexto("Formulário"));
+
+
+        }
     }
 }
 /*
@@ -33,14 +47,14 @@ public class SplashTeste extends BaseTest
     private MenuPage menu = new MenuPage();
 private SplashPage splash = new SplashPage();
 
-@Test
+[Test]
     public void deveAguardarSplashSumir()
 {
     menu.acessarSplash();
     splash.isTelaSplashVisivel();
     splash.aguardarSplashSumir();
 
-    Assert.assertTrue(splash.existeElementoPorTexto("Formulário"));
+    Assert.True(splash.existeElementoPorTexto("Formulário"));
 
 
 }

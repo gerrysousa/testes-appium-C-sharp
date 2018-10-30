@@ -13,8 +13,25 @@ using testes_appium_C_sharp.page;
 
 namespace testes_appium_C_sharp.test
 {
-    class OpcaoEscondidaTeste
+    class OpcaoEscondidaTeste : BaseTest
     {
+        private MenuPage menu = new MenuPage();
+
+        [Test]
+    public void deveAcessarOpcaoEscondida()
+        {
+            WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), TimeSpan.FromSeconds(10));
+            wait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(By.XPath("//*[@text='Formulário']")));
+
+            menu.scrollDown();
+
+            menu.clicarTexto("Opção bem escondida");
+
+            Assert.AreEqual("Você achou essa opção", menu.obterMensageAlerta());
+
+            menu.clicarTexto("OK");
+
+        }
     }
 }
 /*
@@ -38,17 +55,17 @@ public class OpcaoEscondidaTeste extends BaseTest
 
     private MenuPage menu = new MenuPage();
 
-@Test
+[Test]
     public void deveAcessarOpcaoEscondida()
 {
-    WebDriverWait wait = new WebDriverWait(getDriver(), 10);
-    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@text='Formulário']")));
+    WebDriverWait wait = new WebDriverWait(getDriver(), TimeSpan.FromSeconds(10));
+    Wait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(By.XPath("//*[@text='Formulário']")));
 
     menu.scrollDown();
 
     menu.clicarTexto("Opção bem escondida");
 
-    Assert.assertEquals("Você achou essa opção", menu.obterMensageAlerta());
+    Assert.AreEqual("Você achou essa opção", menu.obterMensageAlerta());
 
     menu.clicarTexto("OK");
 

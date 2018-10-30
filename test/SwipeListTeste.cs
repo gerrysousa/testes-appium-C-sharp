@@ -13,8 +13,30 @@ using testes_appium_C_sharp.page;
 
 namespace testes_appium_C_sharp.test
 {
-    class SwipeListTeste
+    class SwipeListTeste : BaseTest
     {
+        private MenuPage menu = new MenuPage();
+        private SwipeListPage page = new SwipeListPage();
+
+        [Test]
+    public void deveIntaragirSwipeList()
+        {
+            WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), TimeSpan.FromSeconds(10));
+            wait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(By.XPath("//*[@text='Formulário']")));
+            menu.scroll(0.9, 0.10);
+            menu.acessarSwipeList();
+
+            page.swipeElementRight("Opção 1");
+            page.clicarBotaoMais();
+            Assert.True(page.existeElementoPorTexto("Opção 1 (+)"));
+
+            page.swipeElementRight("Opção 4");
+            page.clicarTexto("(-)");
+            Assert.True(page.existeElementoPorTexto("Opção 4 (-)"));
+
+            page.swipeElementLeft("Opção 5 (-)");
+            Assert.True(page.existeElementoPorTexto("Opção 5"));
+        }
     }
 }
 /*
@@ -39,24 +61,24 @@ public class SwipeListTeste extends BaseTest
     private MenuPage menu = new MenuPage();
 private SwipeListPage page = new SwipeListPage();
 
-@Test
+[Test]
     public void deveIntaragirSwipeList()
 {
-    WebDriverWait wait = new WebDriverWait(getDriver(), 10);
-    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@text='Formulário']")));
+    WebDriverWait wait = new WebDriverWait(getDriver(), TimeSpan.FromSeconds(10));
+    Wait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(By.XPath("//*[@text='Formulário']")));
     menu.scroll(0.9, 0.10);
     menu.acessarSwipeList();
 
     page.swipeElementRight("Opção 1");
     page.clicarBotaoMais();
-    Assert.assertTrue(page.existeElementoPorTexto("Opção 1 (+)"));
+    Assert.True(page.existeElementoPorTexto("Opção 1 (+)"));
 
     page.swipeElementRight("Opção 4");
     page.clicarTexto("(-)");
-    Assert.assertTrue(page.existeElementoPorTexto("Opção 4 (-)"));
+    Assert.True(page.existeElementoPorTexto("Opção 4 (-)"));
 
     page.swipeElementLeft("Opção 5 (-)");
-    Assert.assertTrue(page.existeElementoPorTexto("Opção 5"));
+    Assert.True(page.existeElementoPorTexto("Opção 5"));
 }
 
 }
